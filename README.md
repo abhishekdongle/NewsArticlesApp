@@ -1,6 +1,7 @@
 ## 🚀 Project Setup & Git Deployment
+- Create a project in Android Studio with the appropriate project name and package name.
 
-## Create a project in Android Studio with the appropriate project name and package name.
+## Install Requirements
 - This project requires ***Kotlin Multiplatform Mobile (KMM)*** and the ***SQLDelight*** plugin with ***Java 17+***.
 - To develop both Android & iOS apps, install the respective IDEs: Android Studio and Xcode.
 - We're considering the Android project as the base for starting the Kotlin Multiplatform app.
