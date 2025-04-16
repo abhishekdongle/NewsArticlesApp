@@ -8,3 +8,7 @@ captures
 .cxx
 local.properties
 xcuserdata
+ *.jks
+ *.keystore
+ *.hprof
+ build/generated
