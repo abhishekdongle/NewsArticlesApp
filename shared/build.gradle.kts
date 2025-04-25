@@ -15,7 +15,7 @@ kotlin {
             }
         }
     }
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -33,6 +33,12 @@ kotlin {
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
+        }
+        androidMain.dependencies {
+            implementation(libs.androidx.lifecycle.viewmodel)
+        }
+        iosMain.dependencies {
+
         }
     }
 }

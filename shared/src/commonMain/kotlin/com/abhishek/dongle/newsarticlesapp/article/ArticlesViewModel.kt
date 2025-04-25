@@ -1,6 +1,6 @@
-package com.abhishek.dongle.newsarticlesapp.android.article
+package com.abhishek.dongle.newsarticlesapp.article
 
-import com.abhishek.dongle.newsarticlesapp.android.base.BaseViewModel
+import com.abhishek.dongle.newsarticlesapp.BaseViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
