@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
                         .padding(WindowInsets.statusBars.asPaddingValues()),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    ArticlesScreen(articleViewModel = articlesViewModel)
+                    ArticlesScreen(articleViewModel = articlesViewModel, onSettingsClicked = {})
                 }
             }
         }

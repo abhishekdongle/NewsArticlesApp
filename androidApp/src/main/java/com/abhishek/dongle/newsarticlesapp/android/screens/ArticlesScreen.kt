@@ -14,6 +14,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.MoreVert
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -37,11 +38,14 @@ import com.abhishek.dongle.newsarticlesapp.article.Article
 import com.abhishek.dongle.newsarticlesapp.article.ArticlesViewModel
 
 @Composable
-fun ArticlesScreen(articleViewModel: ArticlesViewModel) {
+fun ArticlesScreen(
+    onSettingsClicked: () -> Unit,
+    articleViewModel: ArticlesViewModel
+) {
     val articleState = articleViewModel.articleState.collectAsState()
 
     Column {
-        AppBar()
+        AppBar(onSettingsClicked)
         if (articleState.value.loading)
             Loader()
         if (articleState.value.error != null)
@@ -53,7 +57,7 @@ fun ArticlesScreen(articleViewModel: ArticlesViewModel) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun AppBar() {
+private fun AppBar(onSettingsClicked: () -> Unit) {
     var expanded by remember { mutableStateOf(false) }
 
     TopAppBar(
@@ -69,8 +73,14 @@ private fun AppBar() {
                 expanded = expanded,
                 onDismissRequest = { expanded = false }
             ) {
-                Text(text = "Setting", modifier = Modifier.padding(4.dp))
-                Text(text = "Logout", modifier = Modifier.padding(4.dp))
+                DropdownMenuItem(
+                    text = { Text(text = "Settings") },
+                    onClick = { onSettingsClicked() }
+                )
+                DropdownMenuItem(
+                    text = { Text(text = "Logout") },
+                    onClick = {}
+                )
             }
         }
     )
