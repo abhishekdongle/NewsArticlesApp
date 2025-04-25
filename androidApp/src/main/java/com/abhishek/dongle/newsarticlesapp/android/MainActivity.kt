@@ -10,10 +10,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.material3.*
 import androidx.compose.ui.Modifier
+import com.abhishek.dongle.newsarticlesapp.Platform
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Platform().logSystemInfo()
+
         setContent {
             NewsArticlesAppTheme {
                 Surface(
