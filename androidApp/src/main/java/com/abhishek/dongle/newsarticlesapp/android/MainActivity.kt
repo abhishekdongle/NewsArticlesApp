@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.statusBars
 import androidx.compose.material3.*
 import androidx.compose.ui.Modifier
 import com.abhishek.dongle.newsarticlesapp.article.ArticlesViewModel
-import com.abhishek.dongle.newsarticlesapp.android.screens.ArticlesScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,7 +26,7 @@ class MainActivity : ComponentActivity() {
                         .padding(WindowInsets.statusBars.asPaddingValues()),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    ArticlesScreen(articleViewModel = articlesViewModel, onSettingsClicked = {})
+                    AppNavHost(viewModel = articlesViewModel)
                 }
             }
         }
