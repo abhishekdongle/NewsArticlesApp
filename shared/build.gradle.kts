@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.sqlDelight)
 }
 
 kotlin {
@@ -36,6 +37,7 @@ kotlin {
             implementation(libs.ktor.serialization.kotlinx.json)
             implementation(libs.kotlinx.datetime)
             implementation(libs.koin.core)
+            implementation(libs.sqldelight.coroutines.extensions)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -43,9 +45,11 @@ kotlin {
         androidMain.dependencies {
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.ktor.client.android)
+            implementation(libs.sqldelight.android.driver)
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
+            implementation(libs.sqldelight.native.driver)
         }
     }
 }
@@ -59,5 +63,13 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+    }
+}
+
+sqldelight {
+    databases {
+        create("NewsArticlesAppDB") {
+            packageName.set("com.abhishek.dongle.newsarticlesapp.db")
+        }
     }
 }
