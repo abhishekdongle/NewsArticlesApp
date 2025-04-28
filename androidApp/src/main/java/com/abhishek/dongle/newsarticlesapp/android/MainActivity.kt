@@ -3,7 +3,6 @@ package com.abhishek.dongle.newsarticlesapp.android
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.viewModels
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,12 +10,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.material3.*
 import androidx.compose.ui.Modifier
-import com.abhishek.dongle.newsarticlesapp.article.ArticlesViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val articlesViewModel: ArticlesViewModel by viewModels()
 
         setContent {
             NewsArticlesAppTheme {
@@ -26,7 +23,7 @@ class MainActivity : ComponentActivity() {
                         .padding(WindowInsets.statusBars.asPaddingValues()),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    AppNavHost(viewModel = articlesViewModel)
+                    AppNavHost()
                 }
             }
         }

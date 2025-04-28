@@ -7,12 +7,9 @@ import androidx.navigation.compose.rememberNavController
 import com.abhishek.dongle.newsarticlesapp.android.screens.ArticlesScreen
 import com.abhishek.dongle.newsarticlesapp.android.screens.Screens
 import com.abhishek.dongle.newsarticlesapp.android.screens.SettingsScreen
-import com.abhishek.dongle.newsarticlesapp.article.ArticlesViewModel
 
 @Composable
-fun AppNavHost(
-    viewModel: ArticlesViewModel
-) {
+fun AppNavHost() {
     val navController = rememberNavController()
 
     NavHost(
@@ -21,8 +18,7 @@ fun AppNavHost(
     ) {
         composable(Screens.ARTICLES.route) {
             ArticlesScreen(
-                onSettingsClicked = { navController.navigate(Screens.SETTINGS.route) },
-                articleViewModel = viewModel
+                onSettingsClicked = { navController.navigate(Screens.SETTINGS.route) }
             )
         }
         composable(Screens.SETTINGS.route) {

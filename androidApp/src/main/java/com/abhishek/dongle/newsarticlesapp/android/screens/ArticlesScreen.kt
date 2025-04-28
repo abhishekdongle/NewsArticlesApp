@@ -36,11 +36,12 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.abhishek.dongle.newsarticlesapp.article.Article
 import com.abhishek.dongle.newsarticlesapp.article.ArticlesViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun ArticlesScreen(
     onSettingsClicked: () -> Unit,
-    articleViewModel: ArticlesViewModel
+    articleViewModel: ArticlesViewModel = koinViewModel()
 ) {
     val articleState = articleViewModel.articleState.collectAsState()
 
