@@ -6,7 +6,7 @@ import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
 fun initKoin() {
-    val modules = sharedKoinModule
+    val modules = sharedKoinModule + databaseModule
 
     startKoin {
         modules(modules)

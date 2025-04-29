@@ -1,6 +1,7 @@
 package com.abhishek.dongle.newsarticlesapp.android
 
 import android.app.Application
+import com.abhishek.dongle.newsarticlesapp.android.di.databaseModule
 import com.abhishek.dongle.newsarticlesapp.android.di.viewModelModule
 import com.abhishek.dongle.newsarticlesapp.di.sharedKoinModule
 import org.koin.android.ext.koin.androidContext
@@ -14,7 +15,7 @@ class NewsArticlesApp : Application() {
     }
 
     private fun initKotlin() {
-        val modules = sharedKoinModule + viewModelModule
+        val modules = sharedKoinModule + viewModelModule + databaseModule
         startKoin {
             androidContext(this@NewsArticlesApp)
             modules(modules)
