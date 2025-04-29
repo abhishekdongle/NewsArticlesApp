@@ -17,8 +17,9 @@ class ArticlesViewModel(
 
     fun getArticles(forceRefresh: Boolean = false) {
         scope.launch {
+            _articleState.emit(ArticlesState(loading = true, articles = _articleState.value.articles))
             val fetchedArticles = articlesUseCase.getArticles(forceRefresh)
-            _articleState.emit(ArticlesState(articles = fetchedArticles))
+            _articleState.emit(ArticlesState(loading = false, articles = fetchedArticles))
         }
     }
 }
