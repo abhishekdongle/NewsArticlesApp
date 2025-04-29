@@ -1,6 +1,7 @@
-package com.abhishek.dongle.newsarticlesapp.article
+package com.abhishek.dongle.newsarticlesapp.presentation
 
 import com.abhishek.dongle.newsarticlesapp.BaseViewModel
+import com.abhishek.dongle.newsarticlesapp.application.ArticlesUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch

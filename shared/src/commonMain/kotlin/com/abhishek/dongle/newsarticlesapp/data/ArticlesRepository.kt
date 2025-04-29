@@ -1,4 +1,4 @@
-package com.abhishek.dongle.newsarticlesapp.article
+package com.abhishek.dongle.newsarticlesapp.data
 
 class ArticlesRepository(
     private val dataSource: ArticlesDataSource,

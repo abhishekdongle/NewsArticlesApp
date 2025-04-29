@@ -1,4 +1,4 @@
-package com.abhishek.dongle.newsarticlesapp.article
+package com.abhishek.dongle.newsarticlesapp.data
 
 import com.abhishek.dongle.newsarticlesapp.db.NewsArticlesAppDB
 

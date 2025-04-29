@@ -1,4 +1,4 @@
-package com.abhishek.dongle.newsarticlesapp.article
+package com.abhishek.dongle.newsarticlesapp.data
 
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body

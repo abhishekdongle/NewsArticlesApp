@@ -1,4 +1,4 @@
-package com.abhishek.dongle.newsarticlesapp.article
+package com.abhishek.dongle.newsarticlesapp.data
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

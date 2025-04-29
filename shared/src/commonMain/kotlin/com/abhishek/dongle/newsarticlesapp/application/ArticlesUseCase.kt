@@ -1,5 +1,7 @@
-package com.abhishek.dongle.newsarticlesapp.article
+package com.abhishek.dongle.newsarticlesapp.application
 
+import com.abhishek.dongle.newsarticlesapp.data.ArticleRaw
+import com.abhishek.dongle.newsarticlesapp.data.ArticlesRepository
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone

@@ -1,6 +1,6 @@
 package com.abhishek.dongle.newsarticlesapp.di
 
-import com.abhishek.dongle.newsarticlesapp.article.ArticlesViewModel
+import com.abhishek.dongle.newsarticlesapp.presentation.ArticlesViewModel
 import org.koin.core.context.startKoin
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject

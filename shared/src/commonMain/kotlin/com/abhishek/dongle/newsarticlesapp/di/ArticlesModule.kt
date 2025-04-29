@@ -1,10 +1,10 @@
 package com.abhishek.dongle.newsarticlesapp.di
 
-import com.abhishek.dongle.newsarticlesapp.article.ArticlesDataSource
-import com.abhishek.dongle.newsarticlesapp.article.ArticlesRepository
-import com.abhishek.dongle.newsarticlesapp.article.ArticlesService
-import com.abhishek.dongle.newsarticlesapp.article.ArticlesUseCase
-import com.abhishek.dongle.newsarticlesapp.article.ArticlesViewModel
+import com.abhishek.dongle.newsarticlesapp.data.ArticlesDataSource
+import com.abhishek.dongle.newsarticlesapp.data.ArticlesRepository
+import com.abhishek.dongle.newsarticlesapp.data.ArticlesService
+import com.abhishek.dongle.newsarticlesapp.application.ArticlesUseCase
+import com.abhishek.dongle.newsarticlesapp.presentation.ArticlesViewModel
 import org.koin.dsl.module
 
 val articlesModule = module {

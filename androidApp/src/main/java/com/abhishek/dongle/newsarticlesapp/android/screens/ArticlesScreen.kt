@@ -33,8 +33,8 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.abhishek.dongle.newsarticlesapp.article.Article
-import com.abhishek.dongle.newsarticlesapp.article.ArticlesViewModel
+import com.abhishek.dongle.newsarticlesapp.application.Article
+import com.abhishek.dongle.newsarticlesapp.presentation.ArticlesViewModel
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
