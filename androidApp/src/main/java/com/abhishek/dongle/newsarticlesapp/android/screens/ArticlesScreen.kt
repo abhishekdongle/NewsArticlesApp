@@ -7,20 +7,19 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.MoreVert
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.pulltorefresh.PullToRefreshBox
+import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -47,12 +46,10 @@ fun ArticlesScreen(
 
     Column {
         AppBar(onSettingsClicked)
-        if (articleState.value.loading)
-            Loader()
         if (articleState.value.error != null)
             ErrorMessage(articleState.value.error!!)
         if (articleState.value.articles.isNotEmpty())
-            ArticleListView(articleState.value.articles)
+            ArticleListView(viewModel = articleViewModel)
     }
 }
 
@@ -87,11 +84,21 @@ private fun AppBar(onSettingsClicked: () -> Unit) {
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ArticleListView(articles: List<Article>) {
-    LazyColumn(modifier = Modifier.fillMaxSize()) {
-        items(articles) { article ->
-            ArticleItemView(article = article)
+fun ArticleListView(viewModel: ArticlesViewModel) {
+    val articleState by viewModel.articleState.collectAsState()
+    val state = rememberPullToRefreshState()
+
+    PullToRefreshBox(
+        isRefreshing = articleState.loading,
+        onRefresh = { viewModel.getArticles(true) },
+        state = state
+    ) {
+        LazyColumn(modifier = Modifier.fillMaxSize()) {
+            items(articleState.articles) { article ->
+                ArticleItemView(article = article)
+            }
         }
     }
 }
@@ -121,20 +128,6 @@ fun ArticleItemView(article: Article) {
             modifier = Modifier.align(Alignment.End)
         )
         Spacer(modifier = Modifier.height(4.dp))
-    }
-}
-
-@Composable
-fun Loader() {
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
-        CircularProgressIndicator(
-            modifier = Modifier.width(64.dp),
-            color = MaterialTheme.colorScheme.surfaceVariant,
-            trackColor = MaterialTheme.colorScheme.secondary
-        )
     }
 }
 
