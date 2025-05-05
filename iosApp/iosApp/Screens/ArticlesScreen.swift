@@ -1,6 +1,60 @@
 import SwiftUI
 import shared
 
+extension ArticlesScreen {
+
+    @MainActor
+    class ArticlesViewModelWrapper: ObservableObject {
+        let articlesViewModel: ArticlesViewModel
+
+        @Published var articleState: ArticlesState
+
+        init() {
+            articlesViewModel = ArticlesInjector().articlesViewModel
+            articleState = articlesViewModel.articleState.value
+        }
+        
+        func startObserving() {
+            Task {
+                for await articlesS in articlesViewModel.articleState {
+                    self.articleState = articlesS
+                }
+            }
+        }
+    }
+}
+
+struct ArticlesScreen: View {
+    @ObservedObject private(set) var viewModel: ArticlesViewModelWrapper
+
+    var body: some View {
+        VStack {
+            AppBar()
+
+            if viewModel.articleState.loading {
+                Loader()
+            }
+
+            if let error = viewModel.articleState.error {
+                ErrorMessage(message: error)
+            }
+
+            if !viewModel.articleState.articles.isEmpty {
+                ScrollView {
+                    LazyVStack(spacing: 10) {
+                        ForEach(viewModel.articleState.articles, id: \.self) { article in
+                            ArticleItemView(article: article)
+                        }
+                    }
+                }
+            }
+        }
+        .onAppear {
+            self.viewModel.startObserving()
+        }
+    }
+}
+
 struct AppBar: View {
     var body: some View {
         Text("Articles")
