@@ -2,14 +2,29 @@ import SwiftUI
 import shared
 
 struct ContentView: View {
+    @State private var shouldOpenSettings = false
 
-	var body: some View {
-        ArticlesScreen(viewModel: .init())
-	}
+    var body: some View {
+        NavigationStack {
+            ArticlesScreen(viewModel: .init())
+                .toolbar {
+                    ToolbarItem {
+                        Button {
+                            shouldOpenSettings = true
+                        } label: {
+                            Label("Settings", systemImage: "info.circle").labelStyle(.titleAndIcon)
+                        }
+                        .popover(isPresented: $shouldOpenSettings) {
+                            SettingsScreen()
+                        }
+                    }
+                }
+        }
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
-	static var previews: some View {
-		ContentView()
-	}
+    static var previews: some View {
+       ContentView()
+    }
 }
